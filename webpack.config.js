@@ -55,22 +55,22 @@ module.exports = async function (env) {
   portfinder.basePort = (env && env.port) || 1962
   return portfinder.getPortPromise().then(port => {
     const plugins = [
-      new ExtWebpackPlugin({
-        framework: framework,
-        toolkit: toolkit,
-        theme: theme,
-        packages: packages,
-        script: script,
-        emit: emit,
-        port: port,
-        profile: profile, 
-        environment: environment,
-        treeshake: treeshake,
-        browser: browser,
-        watch: watch,
-        verbose: verbose,
-        cmdopts: cmdopts
-      })
+    //   new ExtWebpackPlugin({
+    //     framework: framework,
+    //     toolkit: toolkit,
+    //     theme: theme,
+    //     packages: packages,
+    //     script: script,
+    //     emit: emit,
+    //     port: port,
+    //     profile: profile, 
+    //     environment: environment,
+    //     treeshake: treeshake,
+    //     browser: browser,
+    //     watch: watch,
+    //     verbose: verbose,
+    //     cmdopts: cmdopts
+    //   })
     ]
     return {
       mode: environment,
