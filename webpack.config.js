@@ -91,19 +91,20 @@ module.exports = async function (env) {
       optimization: { noEmitOnErrors: true },
       node: false,
       devServer: {
-        watchOptions: {
-          ignored: ignoreFolders
-        },
-        contentBase: [path.resolve(__dirname, outputFolder)],
-        watchContentBase: !isProd,
         liveReload: !isProd,
         historyApiFallback: !isProd,
         host: host,
         port: port,
-        disableHostCheck: isProd,
+        allowedHosts: 'all',
         compress: isProd,
-        inline: !isProd,
-        stats: stats
+        static: {
+          directory: path.resolve(__dirname, outputFolder),
+          watch: isProd ? false : { ignored: ignoreFolders }
+        },        
+        devMiddleware: {
+          stats: stats
+        },
+        // inline: !isProd, // this was removed without replacement - https://github.com/webpack/webpack-dev-server/blob/master/migration-v4.md
       }
     }
   })
